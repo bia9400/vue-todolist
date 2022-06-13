@@ -9,6 +9,7 @@ new Vue({
 
         ],
         plusButtonClicked: false,
+        userText:"",
         arrayData: [
             {
                 taskType: "Viaggio",
@@ -55,6 +56,14 @@ new Vue({
         },
         indexdelete(posizionedaeliminare){
             this.arrayData.splice(posizionedaeliminare,1)
+        },
+        addObect(){
+            this.arrayData.push({
+                taskType: this.selected.text,
+                taskChecked: false,
+                taskText: this.userText,
+            })
+            console.log(this.arrayData);
         }
     },
 
