@@ -66,12 +66,12 @@
                         <div class="col">
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Your Activity</label>
-                                <input type="text" v-model="userText" class="form-control" id="exampleFormControlInput1"
+                                <input type="text" @keyup.enter="addObect()" v-model="userText" class="form-control" id="exampleFormControlInput1"
                                     placeholder="walk at 18:00">
                             </div>
                         </div>
 
-                        <input type="button" class="btn btn-primary" @click="addObect()" name="" id="" value="Submit!">
+                        <input type="button" class="btn btn-primary"  @click="addObect()" name="" id="" value="Submit!">
 
                     </div>
                 </div>
