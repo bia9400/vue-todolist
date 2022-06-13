@@ -58,12 +58,17 @@ new Vue({
             this.arrayData.splice(posizionedaeliminare,1)
         },
         addObect(){
+            if(this.userText.trim()!=""){
             this.arrayData.push({
                 taskType: this.selected.text,
                 taskChecked: false,
                 taskText: this.userText,
-            })
-            console.log(this.arrayData);
+            })}
+            else{return}
+            this.plusButtonClicked=false;
+            this.userText="";
+            this.selected="";
+            
         }
     },
 
