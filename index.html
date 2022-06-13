@@ -83,12 +83,12 @@
                                 <input class="form-check-input" type="checkbox" @click="checkboxControl(index)" value=""
                                     id="flexCheckDefault">
                                 <h5>{{task.taskType}}</h5>
-                                <span
-                                    :class="task.taskChecked==true ? `text-decoration-line-through` : ``">{{task.taskText}}</span>
+                                <span :class="task.taskChecked==true ? `text-decoration-line-through` : ``">{{task.taskText}}</span>
+                                   <i @click="indexdelete(index)" style="color: red;" class="fa-solid fa-trash-can"></i>
                             </div>
                         </li>
                     </ul>
-                   
+
 
                 </div>
 

@@ -52,6 +52,9 @@ new Vue({
             else{
                 this.arrayData[index].taskChecked=false
             }
+        },
+        indexdelete(posizionedaeliminare){
+            this.arrayData.splice(posizionedaeliminare,1)
         }
     },
 
