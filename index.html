@@ -1,17 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0-beta1/js/bootstrap.min.js' integrity='sha512-Hqe3s+yLpqaBbXM6VA0cnj/T56ii5YjNrMT9v+us11Q81L0wzUG0jEMNECtugqNu2Uq5MSttCg0p4KK0kCPVaQ==' crossorigin='anonymous'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js' integrity='sha512-pSyYzOKCLD2xoGM1GwkeHbdXgMRVsSqQaaUoHskx/HF09POwvow2VfVEdARIYwdeFLbu+2FCOTRYuiyeGxXkEg==' crossorigin='anonymous'></script>
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0-beta1/css/bootstrap.css' integrity='sha512-F5fn88UDJWd0T1GwpnIpbuFuSxCgXNnJhIihkiWeqYUyLt3oPUaYzL774VjL7eGj8ktZCZQS//txAxgokiz1Lw==' crossorigin='anonymous'/><script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0-beta1/js/bootstrap.min.js' integrity='sha512-Hqe3s+yLpqaBbXM6VA0cnj/T56ii5YjNrMT9v+us11Q81L0wzUG0jEMNECtugqNu2Uq5MSttCg0p4KK0kCPVaQ==' crossorigin='anonymous'></script>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.css'
+        integrity='sha512-1hsteeq9xTM5CX6NsXiJu3Y/g+tj+IIwtZMtTisemEv3hx+S9ngaW4nryrNcPM4xGzINcKbwUJtojslX2KG+DQ=='
+        crossorigin='anonymous' />
     <link rel="stylesheet" href="style.css">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0-beta1/js/bootstrap.min.js'
+        integrity='sha512-Hqe3s+yLpqaBbXM6VA0cnj/T56ii5YjNrMT9v+us11Q81L0wzUG0jEMNECtugqNu2Uq5MSttCg0p4KK0kCPVaQ=='
+        crossorigin='anonymous'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.js'
+        integrity='sha512-pSyYzOKCLD2xoGM1GwkeHbdXgMRVsSqQaaUoHskx/HF09POwvow2VfVEdARIYwdeFLbu+2FCOTRYuiyeGxXkEg=='
+        crossorigin='anonymous'></script>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0-beta1/css/bootstrap.css'
+        integrity='sha512-F5fn88UDJWd0T1GwpnIpbuFuSxCgXNnJhIihkiWeqYUyLt3oPUaYzL774VjL7eGj8ktZCZQS//txAxgokiz1Lw=='
+        crossorigin='anonymous' />
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0-beta1/js/bootstrap.min.js'
+        integrity='sha512-Hqe3s+yLpqaBbXM6VA0cnj/T56ii5YjNrMT9v+us11Q81L0wzUG0jEMNECtugqNu2Uq5MSttCg0p4KK0kCPVaQ=='
+        crossorigin='anonymous'></script>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>My-Trip_ToDO-list</title>
 </head>
+
 <body>
+    <div id="app">
+        <div class="my-container">
+            <div class="d-flex justify-content-between">
+                <h1>TODO</h1>
+
+
+
+                <i class="fa-solid fa-moon d-flex align-items-center"></i>
+            </div>
+            <div class="mine-card">
+                <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label">Ricerca nella tua To-DO</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="attività...">
+                </div>
+                <div class="text-center">
+                    <h3>Add to your list...</h3>
+                    <button type="button" id="add-button" @click="plusClick()"
+                        class="btn btn-primary btn-lg rounded-circle">+</button>
+
+                </div>
+                <div v-if="plusButtonClicked" class="user-input mt-2">
+                    <div class="row difficulty">
+                        <div class="col">
+                            <div class=" mb-3 px-3">
+                                <label for="">
+                                    <h6>Type</h6>
+                                </label>
+                                <select v-model="selected" class="form-select " aria-label="Default select example">
+
+                                    <option v-for="product in products"
+                                        v-bind:value="{ id: product.id, text: product.name }">
+                                        {{ product.name }}
+                                    </option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Your Activity</label>
+                                <input type="text" class="form-control" id="exampleFormControlInput1"
+                                    placeholder="walk at 18:00">
+                            </div>
+                        </div>
+
+                        <input type="button" class="btn btn-primary" name="" id="" value="Submit!">
+
+                    </div>
+                </div>
+
+                <div class="difficulty mt-4">
+                    <ul class="list-group">
+                        <li v-for="(task,index) in arrayData">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" @click="checkboxControl(index)" value=""
+                                    id="flexCheckDefault">
+                                <h5>{{task.taskType}}</h5>
+                                <span
+                                    :class="task.taskChecked==true ? `text-decoration-line-through` : ``">{{task.taskText}}</span>
+                            </div>
+                        </li>
+                    </ul>
+                   
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </div>
     <script src="main.js"></script>
 </body>
-<div id="app"></div>
+
+
 </html>
