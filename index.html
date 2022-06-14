@@ -66,25 +66,53 @@
                         <div class="col">
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Your Activity</label>
-                                <input type="text" @keyup.enter="addObect()" v-model="userText" class="form-control" id="exampleFormControlInput1"
-                                    placeholder="walk at 18:00">
+                                <input type="text" @keyup.enter="addObect()" v-model="userText" class="form-control"
+                                    id="exampleFormControlInput1" placeholder="walk at 18:00">
                             </div>
                         </div>
 
-                        <input type="button" class="btn btn-primary"  @click="addObect()" name="" id="" value="Submit!">
+                        <input type="button" class="btn btn-primary" @click="addObect()" name="" id="" value="Submit!">
 
                     </div>
                 </div>
 
                 <div class="difficulty mt-4">
                     <ul class="list-group">
-                        <li v-for="(task,index) in arrayData">
+                        <h5>{{products[0].name}}</h5>
+                        <li v-for="(task,index) in filterTrip()">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" @click="checkboxControl(index)" value=""
                                     id="flexCheckDefault">
-                                <h5>{{task.taskType}}</h5>
-                                <span :class="task.taskChecked==true ? `text-decoration-line-through` : ``">{{task.taskText}}</span>
-                                   <i @click="indexdelete(index)" style="color: red;" class="fa-solid fa-trash-can"></i>
+
+                                <span
+                                    :class="task.taskChecked==true ? `text-decoration-line-through` : ``">{{task.taskText}}</span>
+                                <i @click="indexdelete(index)" style="color: red;" class="fa-solid fa-trash-can"></i>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="list-group">
+                        <h5>{{products[1].name}}</h5>
+                        <li v-for="(task,index) in filterSpesa()">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" @click="checkboxControl(index)" value=""
+                                    id="flexCheckDefault">
+
+                                <span
+                                    :class="task.taskChecked==true ? `text-decoration-line-through` : ``">{{task.taskText}}</span>
+                                <i @click="indexdelete(index)" style="color: red;" class="fa-solid fa-trash-can"></i>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="list-group">
+                        <h5>{{products[2].name}}</h5>
+                        <li v-for="(task,index) in filterPortfolio()">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" @click="checkboxControl(index)" value=""
+                                    id="flexCheckDefault">
+
+                                <span
+                                    :class="task.taskChecked==true ? `text-decoration-line-through` : ``">{{task.taskText}}</span>
+                                <i @click="indexdelete(index)" style="color: red;" class="fa-solid fa-trash-can"></i>
                             </div>
                         </li>
                     </ul>

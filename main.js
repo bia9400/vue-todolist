@@ -32,7 +32,7 @@ new Vue({
         plusClick() {
             this.plusButtonClicked = true
         },
-       /*  filterTrip() {
+        filterTrip() {
             let x = this.arrayData.filter(student => student.taskType == "Viaggio")
             
             return x
@@ -46,7 +46,7 @@ new Vue({
             let x = this.arrayData.filter(student => student.taskType == "Portfolio")
             
             return x
-        }, */
+        },
         checkboxControl(index){
             if(this.arrayData[index].taskChecked==false)
             {this.arrayData[index].taskChecked=true}
